@@ -3,10 +3,10 @@
 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>robocode.api</artifactId>
-	<name>Robocode API</name>
+	<name>Naval Robocode API</name>
 	<parent>
 		<groupId>net.sf.robocode</groupId>
-		<artifactId>robocode</artifactId>
+		<artifactId>naval-robocode</artifactId>
 		<version>${robocode.version}</version>
 	</parent>
 	<build>
@@ -15,7 +15,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
-					<finalName>robocode</finalName>
+					<finalName>naval-robocode</finalName>
 					<archive>
 						<manifest>
 							<mainClass>robocode.Robocode</mainClass>
@@ -35,7 +35,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 					</execution>
 				</executions>
 				<configuration>
-					<windowtitle>Robocode ${project.version} API</windowtitle>
+					<windowtitle>Naval Robocode ${project.version} API</windowtitle>
 					<docfilessubdirs>true</docfilessubdirs>
 					<doctitle>
 						<![CDATA[<h1>Robocode ${project.version} API</h1>]]>

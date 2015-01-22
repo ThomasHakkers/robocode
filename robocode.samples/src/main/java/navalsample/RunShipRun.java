@@ -14,7 +14,7 @@ import robocode.util.Utils;
  * Shows off how a track-radar works, which is like so:
  * setTurnRadarRightRadians(Utils.normalRelativeAngle(event.getBearingRadarRadians() + getBodyHeadingRadians() - getRadarHeadingRadians()));
  * @author Thales B.V. / Thomas Hakkers
- *
+ *h
  */
 public class RunShipRun extends Ship{
 	int dangerLevel = 0;

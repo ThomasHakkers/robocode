@@ -9,7 +9,6 @@ package net.sf.robocode.ui.battleview;
 
 
 import net.sf.robocode.battle.BattleManager;
-import net.sf.robocode.battle.BoundingRectangle;
 import net.sf.robocode.battle.snapshot.RobotSnapshot;
 import net.sf.robocode.battle.snapshot.components.BlindSpotSnapshot;
 import net.sf.robocode.battle.snapshot.components.WeaponComponentSnapshot;
@@ -616,7 +615,7 @@ public class BattleView extends Canvas {
 		at2.rotate(robotSnapshot.getBodyHeading(), NavalRules.HALF_WIDTH_OFFSET, NavalRules.PROW_OFFSET);
 		Polygon poly1 = Collision.getPolygon(rect2,at2);
 		
-		g.setColor(Color.MAGENTA);
+		g.setColor(Color.ORANGE);
 		g.draw(poly1);
 		g.fillOval((int)(robotSnapshot.getX() + (NavalRules.PROW_OFFSET * Math.cos(robotSnapshot.getBodyHeading() + Math.PI/2)) -5), 
 				(int)(robotSnapshot.getY() + (NavalRules.PROW_OFFSET * Math.sin(robotSnapshot.getBodyHeading() + Math.PI/2)) -5),
@@ -800,7 +799,6 @@ public class BattleView extends Canvas {
 	 */
 	private void drawMines(Graphics2D g, ITurnSnapshot snapShot) {
 		final Shape savedClip = g.getClip();
-		double length;	//For debugging
 
 		g.setClip(null);
 
@@ -816,11 +814,6 @@ public class BattleView extends Canvas {
 
 				// radius = sqrt(x^2 / 0.1 * power), where x is the width of 1 pixel for a minimum 0.1 bullet
 				double scale = max(2 * sqrt(10 * mineSnapshot.getPower()), 2 / this.scale);
-				if(DEBUG){
-					double scale2 = 2 * sqrt(10 * mineSnapshot.getPower());
-					length = scale2;
-					scale = scale2;
-				}
 				at.scale(scale/15, scale/15);
 				
 				
@@ -832,10 +825,6 @@ public class BattleView extends Canvas {
 				if(DEBUG){
 					g.setColor(Color.red);
 					g.fillRect((int)mineSnapshot.getX() - 5, (int)mineSnapshot.getY() -5, 10, 10);
-					g.fillRect((int)mineSnapshot.getX() - 5, battleRules.getBattlefieldHeight() - ((int)mineSnapshot.getY() -5), 10, 10);
-					BoundingRectangle boundingBox = new BoundingRectangle((int)(- length/2), (int)(- length/2), length, length);
-					g.setTransform(at);
-					g.draw(boundingBox);
 				}
 
 			} else if (drawExplosions) {
