@@ -13,7 +13,6 @@ import robocode.Mine;
 import robocode.MineHitEvent;
 import robocode.control.snapshot.MineState;
 import robocode.naval.NavalRules;
-import robocode.naval.interfaces.IProjectile;
 import robocode.robotinterfaces.ITransformable;
 import robocode.util.Collision;
 import robocode.MineHitMineEvent;
@@ -23,7 +22,7 @@ import robocode.MineHitMineEvent;
  * Heavily influenced by {@link BulletPeer}.
  * @author Thales B.V. / Thomas Hakkers
  */
-public class MinePeer implements IProjectile{
+public class MinePeer{
 	MinePeer mine;
 	private static final int EXPLOSION_LENGTH = 17;
 
@@ -85,22 +84,14 @@ public class MinePeer implements IProjectile{
 		return otherRobot.getName();
 	}
 
-	@Override
 	public double getX() {
 		return x;
 	}
 
-	@Override
 	public double getY() {
 		return y;
 	}
 
-	@Override
-	public double getHeading() {
-		return 0;
-	}
-
-	@Override
 	public double getPower() {
 		return power;
 	}

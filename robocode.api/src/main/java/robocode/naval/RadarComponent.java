@@ -7,7 +7,6 @@ import java.awt.geom.Arc2D;
 import java.awt.geom.Point2D;
 import java.nio.ByteBuffer;
 
-import robocode.naval.interfaces.IProjectile;
 import robocode.robotinterfaces.ITransformable;
 import robocode.util.Collision;
 import robocode.util.Coordinates;
@@ -162,8 +161,8 @@ public class RadarComponent extends ComponentBase {
 	 * @param projectile The projectile that has to be inside the scan arc,
 	 * @return {@code true} when the projectile is in the scan arc; {@code false} otherwise.
 	 */
-	public boolean insideScanArc(IProjectile projectile) {
-		return Collision.insideScan(scanArc, projectile);
+	public boolean insideScanArc(Point2D projectile) {
+		return Collision.insideScan(scanArc, projectile.getX(), projectile.getY());
 	}
 	
 	

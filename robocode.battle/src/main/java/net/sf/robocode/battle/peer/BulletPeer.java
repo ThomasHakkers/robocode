@@ -12,7 +12,6 @@ import net.sf.robocode.battle.BattleManager;
 import net.sf.robocode.peer.BulletStatus;
 import robocode.*;
 import robocode.control.snapshot.BulletState;
-import robocode.naval.interfaces.IProjectile;
 import robocode.util.Collision;
 
 import java.awt.geom.Line2D;
@@ -31,7 +30,7 @@ import java.util.List;
  * @author Titus Chen (constributor)
  * @author Pavel Savara (constributor)
  */
-public class BulletPeer implements IProjectile{
+public class BulletPeer /*implements IProjectile*/{
 
 	private static final int EXPLOSION_LENGTH = 17;
 

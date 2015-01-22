@@ -1,8 +1,7 @@
 package robocode.robotinterfaces;
 
-import robocode.naval.interfaces.ICoordinate;
 
-public interface ITransformablePeer extends ICoordinate {
+public interface ITransformablePeer{
 	/**
 	 * Returns the X position of the robot. (0,0) is at the bottom left of the
 	 * battlefield.

@@ -205,11 +205,11 @@ public class ShipPeer extends RobotPeer {
 					double angle = atan2(dx, -1 * dy);	//dy * -1 because for some reason naval Robocode works with negative y values
 						
 					IComponent cF = manager.getComponent(NavalRules.IDX_WEAPON_FRONT);
-					double bearingF = Coordinates.getParallax(this, cF, other) - Utils.normalRelativeAngle(cF.getAngle());
+					double bearingF = Coordinates.getParallax(this, cF, other.getX(), other.getY()) - Utils.normalRelativeAngle(cF.getAngle());
 					bearingF = Utils.normalRelativeAngle(bearingF);
 					
 					IComponent cB = manager.getComponent(NavalRules.IDX_WEAPON_BACK);
-					double bearingB = Coordinates.getParallax(this, cB, other) - Utils.normalRelativeAngle(cB.getAngle());
+					double bearingB = Coordinates.getParallax(this, cB, other.getX(), other.getY()) - Utils.normalRelativeAngle(cB.getAngle());
 					bearingB = Utils.normalRelativeAngle(bearingB);
 					
 					final ScannedShipEvent new_event = new ScannedShipEvent(

@@ -15,7 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import robocode.naval.interfaces.IProjectile;
 import robocode.robotinterfaces.ITransformable;
 
 /**
@@ -400,8 +399,8 @@ public class Collision {
 	 * @param projectile The projectile that has to be scanned.
 	 * @return {@code true} if the projectile got scanned; {@code false} otherwise.
 	 */
-	public static final boolean insideScan(Arc2D a, IProjectile projectile) {
-		return a.contains(new Point2D.Double(projectile.getX(), projectile.getY()));
+	public static final boolean insideScan(Arc2D a, double x, double y) {
+		return a.contains(new Point2D.Double(x, y));
 	}
 	
 	/**

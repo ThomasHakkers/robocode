@@ -7,8 +7,6 @@ import java.awt.geom.Point2D;
 
 import robocode.naval.NavalRules;
 import robocode.naval.interfaces.IComponent;
-import robocode.naval.interfaces.ICoordinate;
-import robocode.naval.interfaces.IProjectile;
 import robocode.robotinterfaces.ITransformable;
 import robocode.robotinterfaces.ITransformablePeer;
 
@@ -130,31 +128,31 @@ public class Coordinates {
 		return AffineTransform.getRotateInstance(heading, x, y);
 	}
 	
-	/**
-	 * Get the parallax (angle) between the component and the projectile.
-	 * <p/>
-	 * <i>The angle is relative based upon the component. (With angle 0 original facing!)</i>
-	 * @param peer The robot to whom the component belongs to.
-	 * @param component The component from whom to measure the parallax to a projectile.
-	 * @param projectile The incoming projectile from whom to find the parallax.
-	 * @return The relative angle between the {@code component} and the {@code projectile}.
-	 */
-	public static double getParallax(ITransformable peer, IComponent component, IProjectile projectile) {
-		return getParallax(peer, component, (ICoordinate) projectile);
-	}
-	
-	/**
-	 * Get the parallax (angle) between the component and the other robot.
-	 * <p/>
-	 * <i>The angle is relative based upon the component. (With angle 0 original facing!)</i>
-	 * @param peer The robot to whom the component belongs to.
-	 * @param component The component from whom to measure the parallax to a other robot.
-	 * @param otherPeer The other robot. (hostile)
-	 * @return The relative angle between the {@code component} and the {@code otherPeer}.
-	 */
-	public static double getParallax(ITransformable peer, IComponent component, ITransformable otherPeer) {
-		return getParallax(peer, component, (ICoordinate) otherPeer);
-	}
+//	/**
+//	 * Get the parallax (angle) between the component and the projectile.
+//	 * <p/>
+//	 * <i>The angle is relative based upon the component. (With angle 0 original facing!)</i>
+//	 * @param peer The robot to whom the component belongs to.
+//	 * @param component The component from whom to measure the parallax to a projectile.
+//	 * @param projectile The incoming projectile from whom to find the parallax.
+//	 * @return The relative angle between the {@code component} and the {@code projectile}.
+//	 */
+//	public static double getParallax(ITransformable peer, IComponent component, IProjectile projectile) {
+//		return getParallax(peer, component, (ICoordinate) projectile);
+//	}
+//	
+//	/**
+//	 * Get the parallax (angle) between the component and the other robot.
+//	 * <p/>
+//	 * <i>The angle is relative based upon the component. (With angle 0 original facing!)</i>
+//	 * @param peer The robot to whom the component belongs to.
+//	 * @param component The component from whom to measure the parallax to a other robot.
+//	 * @param otherPeer The other robot. (hostile)
+//	 * @return The relative angle between the {@code component} and the {@code otherPeer}.
+//	 */
+//	public static double getParallax(ITransformable peer, IComponent component, ITransformable otherPeer) {
+//		return getParallax(peer, component, (ICoordinate) otherPeer);
+//	}
 	
 	/**
 	 * Get the parallax (angle) between the component and the other coordinates.
@@ -165,11 +163,11 @@ public class Coordinates {
 	 * @param projectile The coordinates from whom to find the parallax.
 	 * @return The relative angle between the {@code component} and the {@code other}; in radians.
 	 */
-	protected static double getParallax(ITransformable peer, IComponent component, ICoordinate other) {
+	public static double getParallax(ITransformable peer, IComponent component, double x, double y) {
 		Point2D origin = component.getOrigin(peer);
 		
-		double dx = other.getX() - origin.getX();
-		double dy = other.getY() - origin.getY();
+		double dx = x - origin.getX();
+		double dy = y - origin.getY();
 		double ang = atan2(dx, -dy);
 		
 		return Utils.normalRelativeAngle(ang - peer.getBodyHeading());
