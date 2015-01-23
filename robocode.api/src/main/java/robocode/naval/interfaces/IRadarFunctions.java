@@ -10,7 +10,7 @@ import java.awt.Color;
 public interface IRadarFunctions {
 	//*** RADAR ***//
 	/**
-	 * Set the angle the Radar needs to turn towards the left in degrees. 
+	 * Set the angle the Radar needs to turn towards the left in degrees.  
 	 * If the current angle is 50, and you call this function like setTurnRadarLeftDegrees(40), the angle will end up being 10. (Not instantaneously, of course)
 	 * @param angle The angle you want to turn the radar towards the left in degrees.
 	 */
@@ -35,11 +35,15 @@ public interface IRadarFunctions {
 	  void setTurnRadarRightRadians(double angle);
 	/**
 	 * Retrieve the angle the radar is heading in radians.
+	 * Return value is between 0 and PI*2, where PI/2 degrees would be equivalent to east.
+	 * The value is NOT relative to the ship; it's relative to the battlefield.
 	 * @return The heading of the radar in radians, this is not relative to the ship.
 	 */
 	  double getRadarHeadingRadians();
 	/**
 	 * Retrieve the angle the radar is heading in degrees.
+	 * Return value is between 0 and 360, where 90 degrees would be equivalent to east.
+	 * The value is NOT relative to the ship; it's relative to the battlefield.
 	 * @return The heading of the radar in degrees, this is not relative to the ship.
 	 */
 	  double getRadarHeadingDegrees();

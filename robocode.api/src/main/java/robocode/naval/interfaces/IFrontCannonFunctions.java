@@ -41,12 +41,16 @@ public interface IFrontCannonFunctions {
 	
 	/**
 	 * Retrieve the angle the front cannon is heading in radians.
+	 * Return value is between 0 and PI*2, where PI/2 degrees would be equivalent to east.
+	 * The value is NOT relative to the ship; it's relative to the battlefield.
 	 * @return The heading of the front cannon in radians, this is not relative to the ship.
 	 */
 	  double getFrontCannonHeadingRadians();
 	
 	/**
 	 * Retrieve the angle the front cannon is heading in degrees.
+	 * Return value is between 0 and 360, where 90 degrees would be equivalent to east.
+	 * The value is NOT relative to the ship; it's relative to the battlefield.
 	 * @return The heading of the front cannon in degrees, this is not relative to the ship.
 	 */
 	  double getFrontCannonHeadingDegrees();

@@ -152,8 +152,8 @@ public class Ship extends _RobotBase implements IShip, IBasicEvents4, IPaintEven
 	public void fireBackCannon(double power) { setFirePower(NavalRules.IDX_WEAPON_BACK, power); fire(NavalRules.IDX_WEAPON_BACK); }
 	
 	/** {@inheritDoc} **/
-	public void setCourse(double angle) {
-		setTurnRightDegrees(Utils.normalRelativeAngleDegrees(angle + getBodyHeadingDegrees()));
+	public void setCourseDegrees(double angle) {
+		setTurnRightDegrees(Utils.normalRelativeAngleDegrees(angle - getBodyHeadingDegrees()));
 	}
 	
 	/** {@inheritDoc} **/
@@ -1358,5 +1358,11 @@ public class Ship extends _RobotBase implements IShip, IBasicEvents4, IPaintEven
 		} else {
 			uninitializedException();
 		}
+	}
+	
+	/** {@inheritDoc}   **/
+	@Override
+	public void setCourseRadians(double angle) {
+		setTurnRightRadians(Utils.normalRelativeAngle(angle - getBodyHeadingRadians()));
 	}
 }

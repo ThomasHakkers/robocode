@@ -17,13 +17,19 @@ import robocode.naval.interfaces.*;
 	 * Sets the course towards the specified heading.
 	 * @param angle The angle in degrees to which we want to set course. (0 = North, 90 = East, etc)
 	 */
-	  void setCourse(double angle);
-		
+	void setCourseDegrees(double angle);
+	
+	/**
+	 * Sets the course towards the specified heading.
+	 * @param angle The angle in radians to which we want to set course. (0 = North, PI/2 = East, etc)
+	 */
+	void setCourseRadians(double angle);
+	  
 	/**
 	 * Sets the color of the body of the ship
 	 * @param color The color you wish your ship to be
 	 */
-	  void setBodyColor(Color color);
+	void setBodyColor(Color color);
 		
 		
 		
@@ -131,12 +137,14 @@ import robocode.naval.interfaces.*;
 	
 	/**
 	 * Returns the heading of the Ship in Radians.
+	 * Return value is between 0 and 2*PI, where PI/2 would be equivalent to east.
 	 * @return the heading of the Ship in Radians.
 	 */
 	  double getBodyHeadingRadians();
 	/**
-	 * Returns the heading of the Ship in Radians.
-	 * @return the heading of the Ship in Radians.
+	 * Returns the heading of the Ship in Degrees.
+	 * Return value is between 0 and 360, where 90 degrees would be equivalent to east.
+	 * @return the heading of the Ship in Degrees.
 	 */
 	  double getBodyHeadingDegrees();
 	
@@ -150,6 +158,8 @@ import robocode.naval.interfaces.*;
 		
 	/**
 	 * Returns the absolute heading of the component in degrees.
+	 * Return value is between 0 and 360, where 90 degrees would be equivalent to east.
+	 * The value is NOT relative to the ship; it's relative to the battlefield.
 	 * @param index The index of the component you want to know the heading of.
 	 * @return The heading of the component in degrees.
 	 */
