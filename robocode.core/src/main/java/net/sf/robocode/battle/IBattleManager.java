@@ -92,5 +92,5 @@ public interface IBattleManager extends IBattleManagerBase {
 
 	void cleanup();
 
-	int[] isNavalMixed(BattleProperties battleProperties);
+//	int[] isNavalMixed(BattleProperties battleProperties); THOMA
 }

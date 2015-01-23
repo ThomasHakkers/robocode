@@ -8,8 +8,8 @@
 package net.sf.robocode.battle.peer;
 
 
-import net.sf.robocode.battle.BattleManager;
 import net.sf.robocode.peer.BulletStatus;
+import net.sf.robocode.security.HiddenAccess;
 import robocode.*;
 import robocode.control.snapshot.BulletState;
 import robocode.util.Collision;
@@ -404,7 +404,7 @@ public class BulletPeer /*implements IProjectile*/{
 			updateMovement();
 			checkWallCollision();
 			if (isActive()) {
-				if(BattleManager.IS_NAVAL){
+				if(HiddenAccess.getNaval()){
 					checkShipCollision(robots);
 				}
 				else{

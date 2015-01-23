@@ -8,12 +8,12 @@
 package net.sf.robocode.ui.battleview;
 
 
-import net.sf.robocode.battle.BattleManager;
 import net.sf.robocode.battle.snapshot.RobotSnapshot;
 import net.sf.robocode.battle.snapshot.components.BlindSpotSnapshot;
 import net.sf.robocode.battle.snapshot.components.WeaponComponentSnapshot;
 import net.sf.robocode.robotpaint.Graphics2DSerialized;
 import net.sf.robocode.robotpaint.IGraphicsProxy;
+import net.sf.robocode.security.HiddenAccess;
 import net.sf.robocode.settings.ISettingsManager;
 import net.sf.robocode.settings.ISettingsListener;
 import net.sf.robocode.ui.IImageManager;
@@ -326,7 +326,7 @@ public class BattleView extends Canvas {
 
 		if (snapShot != null) {
 			// Draw scan arcs if it's not a ship. Ships draw their own scan arcs by default.
-			if(!BattleManager.IS_NAVAL)
+			if(!HiddenAccess.getNaval())
 				drawScanArcs(g, snapShot);
 
 			// Draw robots
@@ -340,7 +340,7 @@ public class BattleView extends Canvas {
 		drawBorderEdge(g);
 
 		if (snapShot != null) {
-			if(BattleManager.IS_NAVAL){
+			if(HiddenAccess.getNaval()){
 				// Draw all bullets
 				drawBulletsShip(g, snapShot);
 				// Draw all text
@@ -429,7 +429,7 @@ public class BattleView extends Canvas {
 	}
 
 	private void drawRobots(Graphics2D g, ITurnSnapshot snapShot) {
-		if(!BattleManager.IS_NAVAL){
+		if(!HiddenAccess.getNaval()){
 			drawRealRobots(g,snapShot);
 		}
 		else{

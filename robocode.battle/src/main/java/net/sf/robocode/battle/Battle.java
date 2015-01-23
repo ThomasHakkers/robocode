@@ -341,7 +341,7 @@ public final class Battle extends BaseBattle {
 
 		if (!isAborted()) {
 			//THOMA_NOTE: Different score system for Naval Robocode.
-			if(BattleManager.IS_NAVAL){			
+			if(HiddenAccess.getNaval()){			
 				eventDispatcher.onBattleCompleted(new NavalBattleCompletedEvent(battleRules, computeNavalBattleResults()));
 			}
 			else{

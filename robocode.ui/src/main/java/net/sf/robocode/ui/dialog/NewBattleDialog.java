@@ -8,7 +8,6 @@
 package net.sf.robocode.ui.dialog;
 
 
-import net.sf.robocode.battle.BattleManager;
 import net.sf.robocode.battle.BattleProperties;
 import net.sf.robocode.battle.IBattleManager;
 import net.sf.robocode.core.Container;
@@ -104,15 +103,15 @@ public class NewBattleDialog extends JDialog implements WizardListener {
 		// Dispose this dialog before starting the battle due to pause/resume battle state
 		dispose();
 
-		int[] mixedNaval = battleManager.isNavalMixed(battleProperties);
-		if(mixedNaval[BattleManager.GET_ENVIRONMENT] == -1 || mixedNaval[BattleManager.GET_ENVIRONMENT] > 1 || mixedNaval[BattleManager.IS_MIXED] == 1){
-			JOptionPane.showMessageDialog(this,
-					"You are trying to mix Robots with Ships. Unfortunately, this has not been implemented.",
-					"Sorry, not possible.", JOptionPane.ERROR_MESSAGE);
-					
-			return;
-			
-		}
+//		int[] mixedNaval = battleManager.isNavalMixed(battleProperties);
+//		if(mixedNaval[BattleManager.GET_ENVIRONMENT] == -1 || mixedNaval[BattleManager.GET_ENVIRONMENT] > 1 || mixedNaval[BattleManager.IS_MIXED] == 1){
+//			JOptionPane.showMessageDialog(this,
+//					"You are trying to mix Robots with Ships. Unfortunately, this has not been implemented.",
+//					"Sorry, not possible.", JOptionPane.ERROR_MESSAGE);
+//					
+//			return;
+//			
+//		}
 		
 		// Start new battle after the dialog has been disposed and hence has called resumeBattle()
 		battleManager.startNewBattle(battleProperties, false, false);

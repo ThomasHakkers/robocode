@@ -8,9 +8,9 @@
 package net.sf.robocode.ui.dialog;
 
 
-import net.sf.robocode.battle.BattleManager;
 import net.sf.robocode.battle.BattleResultsTableModel;
 import net.sf.robocode.battle.NavalBattleResultsTableModel;
+import net.sf.robocode.security.HiddenAccess;
 import net.sf.robocode.ui.IWindowManager;
 import robocode.BattleResults;
 
@@ -49,7 +49,7 @@ public class ResultsDialog extends BaseScoreDialog {
 	}
 
 	public void setup(BattleResults[] results, int numRounds) {
-		if(BattleManager.IS_NAVAL){
+		if(HiddenAccess.getNaval()){
 			tableModel = new NavalBattleResultsTableModel(results, numRounds);
 			setTitle(((NavalBattleResultsTableModel) getTableModel()).getTitle());
 		}

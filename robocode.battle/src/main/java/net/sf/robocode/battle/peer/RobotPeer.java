@@ -10,7 +10,6 @@ package net.sf.robocode.battle.peer;
 
 import static net.sf.robocode.io.Logger.logMessage;
 import net.sf.robocode.battle.Battle;
-import net.sf.robocode.battle.BattleManager;
 import net.sf.robocode.battle.BoundingRectangle;
 import net.sf.robocode.host.IHostManager;
 import net.sf.robocode.host.RobotStatics;
@@ -756,7 +755,7 @@ public /*final*/ class RobotPeer implements IRobotPeerBattle, IRobotPeer, ITrans
 						x = sentryBorderSize + RobotPeer.WIDTH + rndX * (safeZoneWidth - 2 * RobotPeer.WIDTH);
 						y = sentryBorderSize + RobotPeer.HEIGHT + rndY * (safeZoneHeight - 2 * RobotPeer.HEIGHT);
 					} else {
-						if(BattleManager.IS_NAVAL){
+						if(HiddenAccess.getNaval()){
 							x = ShipPeer.HEIGHT + rndX * (battleRules.getBattlefieldWidth() - 2 * ShipPeer.HEIGHT);
 							y = ShipPeer.HEIGHT + rndY * (battleRules.getBattlefieldHeight() - 2 * RobotPeer.HEIGHT);
 						}else{
@@ -771,15 +770,10 @@ public /*final*/ class RobotPeer implements IRobotPeerBattle, IRobotPeer, ITrans
 				gunHeading = radarHeading = bodyHeading;
 				updateBoundingBox();
 				
-//				if(BattleManager.IS_NAVAL){
-//					if (validSpotShips(robots)) {
-//						break;
-//					}
-//				}else{
-					if (validSpot(robots)) {
-						break;
-					}
-//				}
+
+				if (validSpot(robots)) {
+					break;
+				}
 			}
 		}
 

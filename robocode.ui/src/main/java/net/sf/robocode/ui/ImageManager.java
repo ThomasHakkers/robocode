@@ -8,7 +8,7 @@
 package net.sf.robocode.ui;
 
 
-import net.sf.robocode.battle.BattleManager;
+import net.sf.robocode.security.HiddenAccess;
 import net.sf.robocode.settings.ISettingsManager;
 import net.sf.robocode.ui.gfx.ImageUtil;
 import net.sf.robocode.ui.gfx.RenderImage;
@@ -102,7 +102,7 @@ public class ImageManager implements IImageManager {
 	}
 
 	public Image getGroundTileImage(int index) {
-		if (BattleManager.IS_NAVAL) {
+		if (HiddenAccess.getNaval()) {
 			groundImages[index] = getImage("/net/sf/robocode/ui/images/naval/ground/blue_metal_" + index + ".png");
 		} else {
 			groundImages[index] = getImage("/net/sf/robocode/ui/images/ground/blue_metal/blue_metal_" + index + ".png");

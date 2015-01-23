@@ -58,6 +58,7 @@ public class HiddenAccess {
 	private static Method robocodeMain;
 	private static boolean initialized;
 	private static boolean foundCore = false;
+	private static boolean isNaval = false;
 
 	public static void init() {
 		if (initialized) {
@@ -320,6 +321,23 @@ public class HiddenAccess {
 			Logger.logError(e.getCause());
 			Logger.logError(e);
 		}
+	}
+	
+	public static void navalRobocodeMain(final String[] args) {
+		init();
+		try {
+			robocodeMain.invoke(null, (Object) args);
+		} catch (IllegalAccessException e) {
+			Logger.logError(e);
+		} catch (InvocationTargetException e) {
+			Logger.logError(e.getCause());
+			Logger.logError(e);
+		}
+		isNaval = true;
+	}
+	
+	public static final boolean getNaval(){
+		return isNaval;
 	}
 
 }

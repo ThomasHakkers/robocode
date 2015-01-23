@@ -475,6 +475,10 @@ public class RobotItem extends RobotSpecItem implements IRobotItem {
 	public boolean isPaintRobot() {
 		return robotType.isPaintRobot();
 	}
+	
+	public boolean isShip(){
+		return robotType.isShip();
+	}
 
 	public URL getClassPathURL() {
 		return classPathURL;
@@ -600,9 +604,5 @@ public class RobotItem extends RobotSpecItem implements IRobotItem {
 
 	public String toString() {
 		return itemUrl.toString();
-	}
-
-	public boolean isShip() {
-		return robotType.isShip();
 	}
 }

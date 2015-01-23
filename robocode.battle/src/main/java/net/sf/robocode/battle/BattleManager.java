@@ -20,8 +20,8 @@ import static net.sf.robocode.io.Logger.logMessage;
 import net.sf.robocode.recording.BattlePlayer;
 import net.sf.robocode.recording.IRecordManager;
 import net.sf.robocode.repository.IRepositoryManager;
-import net.sf.robocode.repository.IRobotItem;
-import net.sf.robocode.security.HiddenAccess;
+//import net.sf.robocode.repository.IRobotItem;
+//import net.sf.robocode.security.HiddenAccess;
 import net.sf.robocode.settings.ISettingsManager;
 import robocode.Event;
 import robocode.control.BattleSpecification;
@@ -44,9 +44,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @author Nathaniel Troutman (contributor)
  * @author Pavel Savara (contributor)
  */
-public class BattleManager implements IBattleManager {
-	public static boolean IS_NAVAL = false;	/** @see BattleManager#isNavalMixed(BattleProperties)    for more info. **/
-	
+public class BattleManager implements IBattleManager {	
 	private final ISettingsManager properties;
 	private final IHostManager hostManager;
 	private final ICpuManager cpuManager;
@@ -195,65 +193,6 @@ public class BattleManager implements IBattleManager {
 		// Start the battlePlayer thread
 		battleThread.start();
 	}
-	
-	public static final int IS_MIXED = 0;
-	public static final int GET_ENVIRONMENT = 1;
-	
-	/**
-	 * THOMA_NOTE: As for a lot of other classes and functions, I wish this function didn't exist.
-	 * It was made as an early security measure to keep Robots and Ships separated. 
-	 * Right now, I wish I would've made a custom Run Config for Naval Robocode.
-	 * I tried doing this, and sadly, I failed. :(
-	 * 
-	 * Method to check whether Ships are mixed with Robots.
-	 * Also tells you whether the game should be run in a Naval environment or in a Battle arena.
-	 * @return int[]. int[IS_MIXED] if you want to know whether Naval and Robocode are together (1 = robots are mixed). int[GET_ENVIRONMENT] to check whether there are ships or robots only. Right now 1 stands for Ships, 0 stands for Robots, 2 stands for unspecified. The game can't start if both Robots and ships wanna fight.
-	 * Didn't use booleans here in case we want to add more environments. 
-	 */
-	public int[] isNavalMixed(BattleProperties battleProperties){
-		this.battleProperties = battleProperties;
-		
-		final RobotSpecification[] battlingRobotsList = repositoryManager.loadSelectedRobots(battleProperties.getSelectedRobots());
-
-		
-		int[] mixedNaval = new int[2];
-		int countShips = 0;
-		int countRobots = 0;
-		
-		if(battlingRobotsList.length > 0){
-			// create robots
-			for (int i = 0; i < battlingRobotsList.length; i++) {
-				RobotSpecification specification = battlingRobotsList[i];
-				final IRobotItem fileSpec = (IRobotItem) HiddenAccess.getFileSpecification(specification);
-				if (fileSpec.isShip()) {
-					++countShips;
-				} 
-				else {
-					++countRobots;
-				}
-			}
-			
-			if(countShips != 0 && countRobots != 0){
-				mixedNaval[IS_MIXED] = 1;
-			}else{
-				mixedNaval[IS_MIXED] = 0;
-				if(countRobots != 0){
-					mixedNaval[GET_ENVIRONMENT] = 0;
-					IS_NAVAL = false;
-				}
-				else if(countShips != 0){
-					mixedNaval[GET_ENVIRONMENT] = 1;
-					IS_NAVAL = true;
-				}
-			}
-			
-			
-			return mixedNaval;
-		}
-		return new int[]{-1,-1}; // <-- Error.
-		
-	}
-
 
 	public String getBattleFilename() {
 		return battleFilename;
