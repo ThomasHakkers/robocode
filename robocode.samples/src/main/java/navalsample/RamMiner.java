@@ -2,8 +2,10 @@ package navalsample;
 
 import java.awt.Color;
 
+import robocode.HitByMineEvent;
 import robocode.HitRobotEvent;
 import robocode.HitWallEvent;
+import robocode.MineHitEvent;
 import robocode.ScannedShipEvent;
 import robocode.Ship;
 import robocode.util.Utils;
@@ -43,7 +45,6 @@ public class RamMiner extends Ship{
 	 */
 	public void onScannedShip(ScannedShipEvent e) {
 		setTurnRightRadians(Utils.normalRelativeAngle(e.getBearingRadians() - Math.PI));
-		System.out.println("Test! " + Math.toDegrees(e.getBearingRadians()));
 		setBack(e.getDistance() + 5);
 		scan(); // Might want to move ahead again!
 	}
@@ -105,5 +106,15 @@ public class RamMiner extends Ship{
 			hitWall = false;
 		}
 		
+	}
+	
+	@Override
+	public void onHitByMine(HitByMineEvent e){
+		System.out.println("Ouch! " + e.getName());
+	}
+	
+	@Override
+	public void onMineHit(MineHitEvent e){
+		System.out.println("Hit! " + e.getName());
 	}
 }

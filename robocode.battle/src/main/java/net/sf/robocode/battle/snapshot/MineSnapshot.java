@@ -282,7 +282,7 @@ public class MineSnapshot implements java.io.Serializable, IXmlSerializable, IMi
 					public void read(String value) {
 						snapshot.isExplosion = Boolean.parseBoolean(value);
 						if (snapshot.isExplosion && snapshot.state == null) {
-							snapshot.state = MineState.EXPLODED;
+							snapshot.state = MineState.EXPLODING;
 						}
 					}
 				});

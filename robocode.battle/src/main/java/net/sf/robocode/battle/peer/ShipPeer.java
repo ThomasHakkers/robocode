@@ -657,8 +657,8 @@ public class ShipPeer extends RobotPeer {
 				return;
 			}
 			Point2D origin = mineComponent.getOrigin(this);
-			double mineX = origin.getX() - (Math.sin(getBodyHeading()) * 80 + Math.PI/2);
-			double mineY = origin.getY() + (Math.cos(getBodyHeading()) * 80 + Math.PI/2);
+			double mineX = origin.getX() - (Math.sin(getBodyHeading()) * 80);
+			double mineY = origin.getY() + (Math.cos(getBodyHeading()) * 80);
 			
 			//Don't place a mine outside the battlefield
 			if(mineX > 0 && mineX < getBattleFieldWidth() && mineY > 0 && mineY < getBattleFieldHeight()){

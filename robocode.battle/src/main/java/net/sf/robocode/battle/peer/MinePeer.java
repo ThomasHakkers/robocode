@@ -47,6 +47,7 @@ public class MinePeer{
 
 	protected int explosionImageIndex; // Do not set to -1
 	
+
 	/**
 	 * Constructor for the MinePeer
 	 * @param owner The ship this mine was launched from
@@ -159,8 +160,7 @@ public class MinePeer{
 		if(boundingBox.isEmpty()){
 			double scale = 2 * sqrt(10 * getPower());
 			double length = scale;
-			boundingBox = new BoundingRectangle((int)(x - length/2), (int)(y - length/2), length, length);
-
+			boundingBox = new BoundingRectangle(x - length/2, y - length/2, length, length);
 		}
 		return boundingBox;
 	}
@@ -173,13 +173,18 @@ public class MinePeer{
 	 */
 	public void update(List<RobotPeer> ships, List<MinePeer> mines) {
 		if (isActive()) {
-			checkShipCollision(ships);
 			if (mines != null) {
 				checkMineCollision(mines);
 			}
+			checkShipCollision(ships);
 		}
 		else{
-			//THOMA_NOTE: Not too sure how frames are supposed to work. But this seems to work for me. D:
+			if(frame == 0){
+				if (mines != null) {
+					checkMineCollision(mines);
+				}
+				checkShipCollision(ships);
+			}
 			frame++;
 		}
 		updateMineState();
@@ -194,15 +199,21 @@ public class MinePeer{
 		for (MinePeer mine: mines) {
 			if (getBooleanCollisionWithMine(mine)) {
 
-				state = MineState.HIT_MINE;
+				state = MineState.EXPLODING;
 				frame = 0;
 
-				mine.state = MineState.HIT_MINE;
+				mine.state = MineState.EXPLODING;
 				mine.frame = 0;
 
 				owner.addEvent(new MineHitMineEvent(createMine(false), mine.createMine(true)));
 				mine.owner.addEvent(new MineHitMineEvent(mine.createMine(false), createMine(true)));
-				break;
+				double blastRadius = NavalRules.getBlastRadius(power);
+				boundingBox.setRect(
+						boundingBox.getX() - blastRadius, 
+						boundingBox.getY() - blastRadius, 
+						boundingBox.getWidth() + blastRadius*2, 
+						boundingBox.getHeight() + blastRadius*2);
+
 			}
 		}
 	}
@@ -229,9 +240,9 @@ public class MinePeer{
 			}
 			break;
 		case FLOATING:
-		case HIT_MINE:
-		case HIT_VICTIM:
-		case EXPLODED:
+		case HIT_MINE:	
+		case HIT_VICTIM:	
+		case EXPLODING:
 			// Note that the bullet explosion must be ended before it goes into the INACTIVE state
 			if (frame >= getExplosionLength()) {
 				state = MineState.INACTIVE;
@@ -247,47 +258,60 @@ public class MinePeer{
 	 * @param ships the ships currently in the battlefield.
 	 */
 	private void checkShipCollision(List<RobotPeer> ships) {
-		ShipPeer otherShip = null;
+		ShipPeer otherShip;
 		for (RobotPeer otherRobot : ships) {
 			if (!(otherRobot == null || otherRobot.isDead()) && otherRobot instanceof ShipPeer) {
 				otherShip = (ShipPeer)otherRobot;
 				if(Collision.collide((ITransformable)otherShip, (Rectangle2D)getBoundingRectangle())){
-					state = MineState.HIT_VICTIM;
-					frame = 0;
-					victim = (ShipPeer)otherShip;
-					
-					double damage = NavalRules.getMineDamage(power);
-	
-					double score = damage;
-					if (score > otherShip.getEnergy()) {
-						score = otherShip.getEnergy();
+					//if we hit a ship, the minestate == HIT_VICTIM, but it doesn't explode yet.
+					if(state == MineState.FLOATING || state == MineState.PLACED){
+						state = MineState.EXPLODING;
+						double blastRadius = NavalRules.getBlastRadius(power);
+						boundingBox.setRect(
+								boundingBox.getX() - blastRadius, 
+								boundingBox.getY() - blastRadius, 
+								boundingBox.getWidth() + blastRadius*2, 
+								boundingBox.getHeight() + blastRadius*2);
+						break;
 					}
-					otherShip.updateEnergy(-damage);
-					
-					
-					((ShipStatistics)owner.getRobotStatistics()).scoreMineDamage(otherRobot.getName(), score);
-
-					if (otherShip.getEnergy() <= 0 && otherShip.isAlive()) {
-						otherShip.kill();
-						double bonus = ((ShipStatistics)owner.getRobotStatistics()).scoreMineKill(otherShip.getName());
-						if (bonus > 0) {
-							owner.println(
-									"SYSTEM: Bonus for killing "
-											+ (owner.getNameForEvent(otherShip) + ": " + (int) (bonus + .5)));
-						}
+					else if(state == MineState.EXPLODING){
+						frame = 0;
+						victim = (ShipPeer)otherShip;
 						
+						double damage = NavalRules.getMineDamage(power);
+		
+						double score = damage;
+						if (score > otherShip.getEnergy()) {
+							score = otherShip.getEnergy();
+						}
+						otherShip.updateEnergy(-damage);
+						
+						
+						((ShipStatistics)owner.getRobotStatistics()).scoreMineDamage(otherRobot.getName(), score);
+
+						if (otherShip.getEnergy() <= 0 && otherShip.isAlive()) {
+							otherShip.kill();
+							double bonus = ((ShipStatistics)owner.getRobotStatistics()).scoreMineKill(otherShip.getName());
+							if (bonus > 0) {
+								owner.println(
+										"SYSTEM: Bonus for killing "
+												+ (owner.getNameForEvent(otherShip) + ": " + (int) (bonus + .5)));
+							}
+							
+						}
+						if(otherShip != owner)
+							owner.updateEnergy(NavalRules.getMineHitBonus(power));
+						
+						otherShip.addEvent(
+								new HitByMineEvent(createMine(true))); 
+						owner.addEvent(
+								new MineHitEvent(owner.getNameForEvent(victim), victim.getEnergy(), createMine(false)));
+		
+//						break;
 					}
-					if(otherShip != owner)
-						owner.updateEnergy(NavalRules.getMineHitBonus(power));
-					
-					otherShip.addEvent(
-							new HitByMineEvent(createMine(true))); 
-					owner.addEvent(
-							new MineHitEvent(owner.getNameForEvent(victim), victim.getEnergy(), createMine(false))); // Bugfix #366
-	
-					break;
 				}
 			}
+					
 		}
 	}	
 }

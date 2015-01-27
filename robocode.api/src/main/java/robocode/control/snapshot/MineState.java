@@ -11,7 +11,7 @@ public enum MineState {
 	HIT_VICTIM(2),
 
 	/** The mine currently represents a ship explosion, i.e. a ship death. */
-	EXPLODED(3),
+	EXPLODING(3),
 
 	HIT_MINE(4),
 	
@@ -57,7 +57,7 @@ public enum MineState {
 			return HIT_VICTIM;
 
 		case 3:
-			return EXPLODED;
+			return EXPLODING;
 
 		case 4:
 			return HIT_MINE;
@@ -71,6 +71,6 @@ public enum MineState {
 	}
 	
 	public boolean isActive() {
-		return this == PLACED || this == FLOATING;
+		return this == PLACED || this == FLOATING || this == HIT_MINE || this == HIT_VICTIM;
 	}
 }

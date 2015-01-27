@@ -33,10 +33,12 @@ public class NavalRules {
 	 * The offsets from the Pivot point(PROW_OFFSET), for the different components.
 	 */
 	public static final double
-			CENTRAL_RADAR_OFFSET = HALF_HEIGHT_OFFSET - PROW_OFFSET, // center, center
-			FRONT_WEAPON_OFFSET = 34.0d - PROW_OFFSET, // center, front
+			CENTRAL_RADAR_OFFSET = HALF_HEIGHT_OFFSET - PROW_OFFSET, // center, center    PivotY - central radar Y = radar Y
+			FRONT_WEAPON_OFFSET = 34.0d - PROW_OFFSET, // center, front 
 			BACK_WEAPON_OFFSET = HEIGHT - PROW_OFFSET - 24.0d, // center, back
-			MINE_COMPONENT_OFFSET = HEIGHT - PROW_OFFSET - 40.0d;
+			MINE_COMPONENT_OFFSET = HEIGHT - PROW_OFFSET - 40.0d;   
+	// HEIGHT - PROW_OFFSET = edge of ship    At moment, mines are placed 80 pixels from the minecomponent. So 40 pixels from the edge.
+	// So, if I want to make mines with a power of 5 viable for ramming, I need to make sure the blast radius doesn't exceed 40. (So I'll go with 35)
 	
 	/**
 	 * The indices of the different components as used by the AdvancedShip class.
@@ -294,4 +296,13 @@ public class NavalRules {
 		return 3 * minePower;
 	}
 	
+	/**
+	 * Experimental: Blastradius
+	 * Mine blast radius = mine_Radius + blastRadius
+	 */
+//	public static final double BLAST_RADIUS = 50;
+	
+	public static double getBlastRadius(double minePower){
+		return minePower * 7;
+	}
 }

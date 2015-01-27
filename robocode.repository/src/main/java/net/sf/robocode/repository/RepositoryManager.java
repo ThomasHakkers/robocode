@@ -352,7 +352,6 @@ public class RepositoryManager implements IRepositoryManager { // NO_UCD (use de
 			if(ignoreTeamRobots && (repositoryItem instanceof TeamItem)){
 				continue;
 			}
-			System.out.println(repositoryItem.getClass());
 			res.add(spec);
 		}
 		Collections.sort(res);

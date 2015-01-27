@@ -41,7 +41,7 @@
 		<item value="12" key="HISTORY_SIZE"/>
 		<section name="HISTORY11">
 			<item value="false" key="isRegExSearch"/>
-			<item value="marine" key="textPattern"/>
+			<item value="THOMA" key="textPattern"/>
 			<item value="0" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<item value="false" key="isWholeWord"/>
@@ -53,108 +53,12 @@
 		</section>
 		<section name="EXTENSIONS">
 			<item value="*.formatted" key="3"/>
-			<item value="*.java" key="2"/>
-			<item value="*.pom" key="1"/>
-			<item value="*.*" key="0"/>
+			<item value="*.pom" key="2"/>
+			<item value="*.*" key="1"/>
+			<item value="*.java" key="0"/>
 			<item value="*" key="4"/>
 		</section>
 		<section name="HISTORY10">
-			<item value="false" key="isRegExSearch"/>
-			<item value="terror" key="textPattern"/>
-			<item value="0" key="scope"/>
-			<item value="true" key="ignoreCase"/>
-			<item value="false" key="isWholeWord"/>
-			<list key="fileNamePatterns">
-				<item value="*.java"/>
-			</list>
-			<list key="workingSets">
-			</list>
-		</section>
-		<section name="HISTORY9">
-			<item value="false" key="isRegExSearch"/>
-			<item value="goal" key="textPattern"/>
-			<item value="0" key="scope"/>
-			<item value="true" key="ignoreCase"/>
-			<item value="false" key="isWholeWord"/>
-			<list key="fileNamePatterns">
-				<item value="*.java"/>
-			</list>
-			<list key="workingSets">
-			</list>
-		</section>
-		<section name="HISTORY8">
-			<item value="false" key="isRegExSearch"/>
-			<item value="prettig" key="textPattern"/>
-			<item value="0" key="scope"/>
-			<item value="true" key="ignoreCase"/>
-			<item value="false" key="isWholeWord"/>
-			<list key="fileNamePatterns">
-				<item value="*.*"/>
-			</list>
-			<list key="workingSets">
-			</list>
-		</section>
-		<section name="HISTORY5">
-			<item value="false" key="isRegExSearch"/>
-			<item value="" key="textPattern"/>
-			<item value="0" key="scope"/>
-			<item value="true" key="ignoreCase"/>
-			<item value="false" key="isWholeWord"/>
-			<list key="fileNamePatterns">
-				<item value="*.formatted"/>
-			</list>
-			<list key="workingSets">
-			</list>
-		</section>
-		<section name="HISTORY4">
-			<item value="false" key="isRegExSearch"/>
-			<item value="THOMA" key="textPattern"/>
-			<item value="0" key="scope"/>
-			<item value="true" key="ignoreCase"/>
-			<item value="false" key="isWholeWord"/>
-			<list key="fileNamePatterns">
-				<item value="*.java"/>
-			</list>
-			<list key="workingSets">
-			</list>
-		</section>
-		<section name="HISTORY7">
-			<item value="false" key="isRegExSearch"/>
-			<item value="Thomas" key="textPattern"/>
-			<item value="0" key="scope"/>
-			<item value="true" key="ignoreCase"/>
-			<item value="false" key="isWholeWord"/>
-			<list key="fileNamePatterns">
-				<item value="*.*"/>
-			</list>
-			<list key="workingSets">
-			</list>
-		</section>
-		<section name="HISTORY6">
-			<item value="false" key="isRegExSearch"/>
-			<item value="formatted" key="textPattern"/>
-			<item value="0" key="scope"/>
-			<item value="true" key="ignoreCase"/>
-			<item value="false" key="isWholeWord"/>
-			<list key="fileNamePatterns">
-				<item value="*.*"/>
-			</list>
-			<list key="workingSets">
-			</list>
-		</section>
-		<section name="HISTORY2">
-			<item value="false" key="isRegExSearch"/>
-			<item value="1.9.2.1" key="textPattern"/>
-			<item value="0" key="scope"/>
-			<item value="true" key="ignoreCase"/>
-			<item value="false" key="isWholeWord"/>
-			<list key="fileNamePatterns">
-				<item value="*.*"/>
-			</list>
-			<list key="workingSets">
-			</list>
-		</section>
-		<section name="HISTORY3">
 			<item value="false" key="isRegExSearch"/>
 			<item value="DEBUG" key="textPattern"/>
 			<item value="0" key="scope"/>
@@ -166,7 +70,55 @@
 			<list key="workingSets">
 			</list>
 		</section>
-		<section name="HISTORY0">
+		<section name="HISTORY9">
+			<item value="false" key="isRegExSearch"/>
+			<item value="1.9.2.1" key="textPattern"/>
+			<item value="0" key="scope"/>
+			<item value="true" key="ignoreCase"/>
+			<item value="false" key="isWholeWord"/>
+			<list key="fileNamePatterns">
+				<item value="*.*"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY8">
+			<item value="false" key="isRegExSearch"/>
+			<item value="robocode" key="textPattern"/>
+			<item value="0" key="scope"/>
+			<item value="true" key="ignoreCase"/>
+			<item value="false" key="isWholeWord"/>
+			<list key="fileNamePatterns">
+				<item value="*.*"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY5">
+			<item value="false" key="isRegExSearch"/>
+			<item value="IS_NAVAL" key="textPattern"/>
+			<item value="0" key="scope"/>
+			<item value="true" key="ignoreCase"/>
+			<item value="false" key="isWholeWord"/>
+			<list key="fileNamePatterns">
+				<item value="*.java"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY4">
+			<item value="false" key="isRegExSearch"/>
+			<item value="getMixed" key="textPattern"/>
+			<item value="0" key="scope"/>
+			<item value="true" key="ignoreCase"/>
+			<item value="false" key="isWholeWord"/>
+			<list key="fileNamePatterns">
+				<item value="*.java"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY7">
 			<item value="false" key="isRegExSearch"/>
 			<item value="setup" key="textPattern"/>
 			<item value="0" key="scope"/>
@@ -178,14 +130,62 @@
 			<list key="workingSets">
 			</list>
 		</section>
-		<section name="HISTORY1">
+		<section name="HISTORY6">
 			<item value="false" key="isRegExSearch"/>
-			<item value="robocode" key="textPattern"/>
+			<item value="setRobotList" key="textPattern"/>
 			<item value="0" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<item value="false" key="isWholeWord"/>
 			<list key="fileNamePatterns">
-				<item value="*.*"/>
+				<item value="*.java"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY2">
+			<item value="false" key="isRegExSearch"/>
+			<item value="isShip" key="textPattern"/>
+			<item value="0" key="scope"/>
+			<item value="true" key="ignoreCase"/>
+			<item value="false" key="isWholeWord"/>
+			<list key="fileNamePatterns">
+				<item value="*.java"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY3">
+			<item value="false" key="isRegExSearch"/>
+			<item value="test!" key="textPattern"/>
+			<item value="0" key="scope"/>
+			<item value="true" key="ignoreCase"/>
+			<item value="false" key="isWholeWord"/>
+			<list key="fileNamePatterns">
+				<item value="*.java"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY0">
+			<item value="false" key="isRegExSearch"/>
+			<item value="getFrame" key="textPattern"/>
+			<item value="0" key="scope"/>
+			<item value="true" key="ignoreCase"/>
+			<item value="false" key="isWholeWord"/>
+			<list key="fileNamePatterns">
+				<item value="*.java"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY1">
+			<item value="false" key="isRegExSearch"/>
+			<item value="onlyship" key="textPattern"/>
+			<item value="0" key="scope"/>
+			<item value="true" key="ignoreCase"/>
+			<item value="false" key="isWholeWord"/>
+			<list key="fileNamePatterns">
+				<item value="*.java"/>
 			</list>
 			<list key="workingSets">
 			</list>

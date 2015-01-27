@@ -48,7 +48,6 @@ public class NavalFireSolo extends Ship{
 	 */
 	public void onScannedShip(ScannedShipEvent e) {
 		setTurnFrontCannonRightDegrees(e.getBearingFront());
-		System.out.println("Test! Front: " + e.getBearingFront());
 		//Test whether the enemy Ship is in gun range.
 		//FRONT
 		if (Math.abs(getFrontCannonTurnRemainingDegrees()) < imprecission) {
@@ -58,7 +57,6 @@ public class NavalFireSolo extends Ship{
 				fireFrontCannon(2);
 		} 
 		setTurnBackCannonRightDegrees(e.getBearingBack());
-		System.out.println("Test! Back: " + e.getBearingBack());
 		//BACK
 		if (Math.abs(getBackCannonTurnRemainingDegrees()) < imprecission) {
 			if(e.getDistance() < 200 && getEnergy() > 50 || getOthers() == 1)

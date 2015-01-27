@@ -824,7 +824,9 @@ public class BattleView extends Canvas {
 				mineRenderImage.paint(g);
 				if(DEBUG){
 					g.setColor(Color.red);
-					g.fillRect((int)mineSnapshot.getX() - 5, (int)mineSnapshot.getY() -5, 10, 10);
+					double blastRadius = NavalRules.getBlastRadius(mineSnapshot.getPower());
+					g.fillRect((int)(mineSnapshot.getX() - blastRadius), (int)(mineSnapshot.getY() - blastRadius), (int)(2*blastRadius), (int)(2*blastRadius));
+					
 				}
 
 			} else if (drawExplosions) {
@@ -833,7 +835,8 @@ public class BattleView extends Canvas {
 
 				// Sanity check to avoid bug-354 - Replaying an XML record can cause an ArrayIndexOutOfBoundsException
 				if (explosionIndex >= 0 && frame >= 0) {
-					double scale = sqrt(1000 * mineSnapshot.getPower()) / 128;
+//					double scale = sqrt(1000 * mineSnapshot.getPower()) / 128;
+					double scale =  2 * NavalRules.getBlastRadius(mineSnapshot.getPower()) / 128;
 					at.scale(scale, scale);
 					
 					RenderImage explosionRenderImage = imageManager.getExplosionRenderImage(explosionIndex, frame);
