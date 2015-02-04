@@ -20,8 +20,6 @@ import static net.sf.robocode.io.Logger.logMessage;
 import net.sf.robocode.recording.BattlePlayer;
 import net.sf.robocode.recording.IRecordManager;
 import net.sf.robocode.repository.IRepositoryManager;
-//import net.sf.robocode.repository.IRobotItem;
-//import net.sf.robocode.security.HiddenAccess;
 import net.sf.robocode.settings.ISettingsManager;
 import robocode.Event;
 import robocode.control.BattleSpecification;

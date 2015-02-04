@@ -3,10 +3,10 @@
 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>robocode.roborumble</artifactId>
-	<name>Naval Roborumble Client</name>
+	<name>Roborumble Client</name>
 	<parent>
 		<groupId>net.sf.robocode</groupId>
-		<artifactId>naval-robocode</artifactId>
+		<artifactId>robocode</artifactId>
 		<version>${robocode.version}</version>
 	</parent>
 	<dependencies>
@@ -38,7 +38,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
-					<finalName>naval-roborumble</finalName>
+					<finalName>roborumble</finalName>
 					<archive>
 						<manifest>
 							<mainClass>roborumble.RoboRumbleAtHome</mainClass>
