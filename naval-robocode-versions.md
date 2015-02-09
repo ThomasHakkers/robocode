@@ -1,3 +1,6 @@
+## Naval Robocode Version 0.9.2 (4-Feb-2015)
+* Merged Flemming workspace with Thomas workspace
+
 ## Naval Robocode Version 0.9.1 (27-Jan-2015)
 
 ### Bug fixes
