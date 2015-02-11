@@ -345,8 +345,15 @@ public class RepositoryManager implements IRepositoryManager { // NO_UCD (use de
 				continue;
 			}
 			if(repositoryItem instanceof RobotItem){
-				if(!(  ((RobotItem)repositoryItem).isShip() && onlyShips)  ){
-					continue;
+				if(onlyShips){
+					if(!((RobotItem)repositoryItem).isShip()){
+						continue;
+					}
+				}
+				else{
+					if(((RobotItem)repositoryItem).isShip()){
+						continue;
+					}
 				}
 			}
 			if(ignoreTeamRobots && (repositoryItem instanceof TeamItem)){

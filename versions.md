@@ -1,10 +1,3 @@
-## Naval Robocode Version 0.9.1 (27-Jan-2014)
-
-### Bug fixes
-* Mines now have a blast Radius. (See NavalRules)
-	* Angles have been better documented
-	* Custom run config   robocode.NavalRobocode
-
 ## Version 1.9.2.1 (21-May-2014)
 
 ### Bug fixes
