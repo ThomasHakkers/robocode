@@ -291,14 +291,13 @@ public class MinePeer{
 
 						if (otherShip.getEnergy() <= 0 && otherShip.isAlive()) {
 							otherShip.kill();
-							if(otherShip != owner){
-								double bonus = ((ShipStatistics)owner.getRobotStatistics()).scoreMineKill(otherShip.getName());
-								if (bonus > 0) {
-									owner.println(
-											"SYSTEM: Bonus for killing "
-													+ (owner.getNameForEvent(otherShip) + ": " + (int) (bonus + .5)));
-								}
+							double bonus = ((ShipStatistics)owner.getRobotStatistics()).scoreMineKill(otherShip.getName());
+							if (bonus > 0) {
+								owner.println(
+										"SYSTEM: Bonus for killing "
+												+ (owner.getNameForEvent(otherShip) + ": " + (int) (bonus + .5)));
 							}
+							
 						}
 						if(otherShip != owner)
 							owner.updateEnergy(NavalRules.getMineHitBonus(power));
